@@ -1,0 +1,41 @@
+﻿<Controls:MetroWindow x:Class="Vista.ListaPedidos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        ShowTitleBar="False"
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Controls:MetroWindow.Background>
+        <LinearGradientBrush EndPoint="0.0,5" StartPoint="1.0,5" Opacity="1">
+            <GradientStop Color="#659999" Offset="0"/>
+            <GradientStop Color="#f4791f" Offset="1"/>
+        </LinearGradientBrush>
+    </Controls:MetroWindow.Background>
+    <Grid Height="auto">
+        <DataGrid x:Name="dgListaCli" Margin="10,70,10.4,70" SelectionChanged="dgListaCli_SelectionChanged"
+            ItemsSource="{Binding Pedidos}">
+        </DataGrid>
+        <StackPanel Margin="600 380 0 0">
+            <Button x:Name="btnMenuPrincipal" Content="Menú Principal" VerticalAlignment="Top" Width="118"
+                Controls:ButtonHelper.CornerRadius="3,3,3,3" FontSize="11" Click="VolverMenuPrincipal"/>
+        </StackPanel>
+        <!--<Grid Height="33" Margin="10,400,10.4,0" VerticalAlignment="Top">
+            <Button ToolTip="Add a new employee record" Click="btnBuscarPedidoCliente" Style="{DynamicResource MetroCircleButtonStyle}" HorizontalAlignment="Left" Height="59" Margin="682,-16,0,-10" VerticalAlignment="Top" Width="60">
+                <Rectangle Width="20" Height="20" Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_page_search}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+            </Button>
+            <TextBox x:Name="txtRut"  Height="30" TextWrapping="Wrap" RenderTransformOrigin="0.31,0.46" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,0,96.6,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="150" IsReadOnly="True"/>
+            <Label x:Name="lblRut" Content="Seleccione cliente para BUSCAR" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Margin="70,0,251.6,0" Height="30" VerticalAlignment="Bottom"/>
+        </Grid>
+        -->
+    </Grid>
+</Controls:MetroWindow>

@@ -1,0 +1,33 @@
+﻿<Controls:MetroWindow x:Class="Vista.DetallePedido"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        ShowTitleBar="False"
+        Title="Detalle Pedido" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <GroupBox x:Name="groupBox2" Header="Cliente" HorizontalAlignment="Left" Margin="230,53,0,0" VerticalAlignment="Top" Height="300" Width="330">
+            <Grid Margin="10,10,10,-5.2">
+                <Label x:Name="lblRut" Content="Rut" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="84"/>
+                <TextBox x:Name="txtRut" IsEnabled="False" HorizontalAlignment="Left" Margin="115,0,0,0" TextWrapping="Wrap" Width="170" Height="25" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblNombre" Content="Nombre" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="84" Margin="0,44,0,0"/>
+                <TextBox x:Name="txtNombre" IsEnabled="False" HorizontalAlignment="Left" Margin="115,44,0,0" TextWrapping="Wrap" Width="170" Height="25" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblHoraPedido" Content="Hora Pedido" HorizontalAlignment="Left" Height="25" Margin="0,90,0,0" VerticalAlignment="Top" Width="108"/>
+                <TextBox x:Name="txtHoraPedido" IsEnabled="False" HorizontalAlignment="Left" Height="18" Margin="115,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" HorizontalContentAlignment="Center"/>
+                <Label x:Name="lblHoraEntrega" Content="Hora Entrega" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="84" Margin="0,132,0,0"/>
+                <TextBox x:Name="txtHoraEntrega" IsEnabled="False" HorizontalAlignment="Left" Margin="115,132,0,0" TextWrapping="Wrap" Width="170" Height="25" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblEstado" Content="Estado" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="84" Margin="0,174,0,0"/>
+                <TextBox x:Name="txtEstado" IsEnabled="False" HorizontalAlignment="Left" Margin="115,173,0,0" TextWrapping="Wrap" Width="170" Height="25" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                <Label x:Name="lblFormaPago" Content="Forma Pago" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="84" Margin="0,216,0,0"/>
+                <TextBox x:Name="txtFormaPago" IsEnabled="False" HorizontalAlignment="Left" Margin="115,215,0,0" TextWrapping="Wrap" Width="170" Height="25" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Controls:MetroWindow>

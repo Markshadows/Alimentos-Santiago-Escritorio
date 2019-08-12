@@ -1,0 +1,1334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModeloAlimentos.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="CLIENTE_ID" />
+          </Key>
+          <Property Name="CLIENTE_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="APPATERNO" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="APMATERNO" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="RUT" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="TIPO_USUARIO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLIENTE_PEDIDO">
+          <Key>
+            <PropertyRef Name="CLIENTE_PEDIDO_ID" />
+          </Key>
+          <Property Name="CLIENTE_PEDIDO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="CLIENTE_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="PEDIDO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CONVENIO_EMPRESA">
+          <Key>
+            <PropertyRef Name="CONVENIO_EMPRESA_ID" />
+          </Key>
+          <Property Name="CONVENIO_EMPRESA_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="RUT" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="100" Nullable="false" />
+          <Property Name="FECHA_INICIO" Type="date" />
+          <Property Name="FECHA_TERMINO" Type="date" />
+          <Property Name="EMPLEADOR" Type="number" Precision="3" Scale="0" />
+        </EntityType>
+        <EntityType Name="DETALLE_VENTA">
+          <Key>
+            <PropertyRef Name="VENTA_ID" />
+          </Key>
+          <Property Name="VENTA_ID" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="CLIENTE_PEDIDO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="TOTAL" Type="number" Precision="10" Scale="0" />
+        </EntityType>
+        <EntityType Name="DIA">
+          <Key>
+            <PropertyRef Name="DIA_ID" />
+          </Key>
+          <Property Name="DIA_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DIA_PLATILLO">
+          <Key>
+            <PropertyRef Name="DIA" />
+            <PropertyRef Name="PLATILLO" />
+          </Key>
+          <Property Name="DIA" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="PLATILLO" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="MODIFICACION" Type="date" />
+        </EntityType>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="EMPLEADO_ID" />
+          </Key>
+          <Property Name="EMPLEADO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="APPATERNO" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="APMATERNO" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="RUT" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="TIPO_USUARIO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EMPLEADOR">
+          <Key>
+            <PropertyRef Name="EMPLEADOR_ID" />
+          </Key>
+          <Property Name="EMPLEADOR_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="APPATERNO" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="APMATERNO" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="RUT" Type="number" Precision="8" Scale="0" Nullable="false" />
+          <Property Name="TIPO_USUARIO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESTADO_PEDIDO">
+          <Key>
+            <PropertyRef Name="ESTADO_ID" />
+          </Key>
+          <Property Name="ESTADO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FORMA_PAGO">
+          <Key>
+            <PropertyRef Name="FORMA_PAGO_ID" />
+          </Key>
+          <Property Name="FORMA_PAGO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="PEDIDO_ID" />
+          </Key>
+          <Property Name="PEDIDO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="FORMA_PAGO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="ESTADO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="HORA_PEDIDO" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="HORA_ENTREGA" Type="timestamp" Precision="6" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PEDIDO_PLATILLO">
+          <Key>
+            <PropertyRef Name="PEDIDO_PLATILLO_ID" />
+          </Key>
+          <Property Name="PEDIDO_PLATILLO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="PEDIDO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="PLATILLO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="CANTIDAD" Type="number" Precision="2" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PLANILLA_TRABAJADORES">
+          <Key>
+            <PropertyRef Name="PLANILLA_ID" />
+          </Key>
+          <Property Name="PLANILLA_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="FECHA_SUBIDA" Type="date" Nullable="false" />
+          <Property Name="CONVENIO_EMPRESA_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE_ARCHIVO" Type="varchar2" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PLATILLO">
+          <Key>
+            <PropertyRef Name="PLATILLO_ID" />
+          </Key>
+          <Property Name="PLATILLO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="VALOR" Type="number" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="PROMEDIO_PREPARACION" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="200" Nullable="false" />
+          <Property Name="SRC" Type="varchar2" MaxLength="20" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TIPO_USUARIO">
+          <Key>
+            <PropertyRef Name="TIPO_USUARIO_ID" />
+          </Key>
+          <Property Name="TIPO_USUARIO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="USUARIO_ID" />
+          </Key>
+          <Property Name="USUARIO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="CONTRASENA" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="TIPO_USUARIO" Type="number" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USUARIO_TIPO_USUARIO">
+          <Key>
+            <PropertyRef Name="TIPO_USUARIO_ID" />
+            <PropertyRef Name="USUARIO_ID" />
+          </Key>
+          <Property Name="TIPO_USUARIO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+          <Property Name="USUARIO_ID" Type="number" Precision="3" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VENTA">
+          <Key>
+            <PropertyRef Name="VENTA_ID" />
+          </Key>
+          <Property Name="VENTA_ID" Type="number" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="FECHA" Type="timestamp" Precision="6" />
+          <Property Name="NUMERO_DOCUMENTO" Type="number" Precision="6" Scale="0" />
+        </EntityType>
+        <Association Name="CLIENTE_USUARIO_TIPO_FK">
+          <End Role="USUARIO_TIPO_USUARIO" Type="Self.USUARIO_TIPO_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO_TIPO_USUARIO">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+              <PropertyRef Name="USUARIO_ID" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+              <PropertyRef Name="USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONVENIO_EMPRESA_FK1">
+          <End Role="EMPLEADOR" Type="Self.EMPLEADOR" Multiplicity="0..1" />
+          <End Role="CONVENIO_EMPRESA" Type="Self.CONVENIO_EMPRESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADOR">
+              <PropertyRef Name="EMPLEADOR_ID" />
+            </Principal>
+            <Dependent Role="CONVENIO_EMPRESA">
+              <PropertyRef Name="EMPLEADOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DIA_PLATILLO_FK1">
+          <End Role="DIA" Type="Self.DIA" Multiplicity="1" />
+          <End Role="DIA_PLATILLO" Type="Self.DIA_PLATILLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIA">
+              <PropertyRef Name="DIA_ID" />
+            </Principal>
+            <Dependent Role="DIA_PLATILLO">
+              <PropertyRef Name="DIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DIA_PLATILLO_FK2">
+          <End Role="PLATILLO" Type="Self.PLATILLO" Multiplicity="1" />
+          <End Role="DIA_PLATILLO" Type="Self.DIA_PLATILLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLATILLO">
+              <PropertyRef Name="PLATILLO_ID" />
+            </Principal>
+            <Dependent Role="DIA_PLATILLO">
+              <PropertyRef Name="PLATILLO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_PEDIDO_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CLIENTE_PEDIDO" Type="Self.CLIENTE_PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="CLIENTE_ID" />
+            </Principal>
+            <Dependent Role="CLIENTE_PEDIDO">
+              <PropertyRef Name="CLIENTE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_PEDIDO_PLATILLO">
+          <End Role="PEDIDO_PLATILLO" Type="Self.PEDIDO_PLATILLO" Multiplicity="1" />
+          <End Role="CLIENTE_PEDIDO" Type="Self.CLIENTE_PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO_PLATILLO">
+              <PropertyRef Name="PEDIDO_PLATILLO_ID" />
+            </Principal>
+            <Dependent Role="CLIENTE_PEDIDO">
+              <PropertyRef Name="PEDIDO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLE_VENTA_CLIENTE">
+          <End Role="CLIENTE_PEDIDO" Type="Self.CLIENTE_PEDIDO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_PEDIDO">
+              <PropertyRef Name="CLIENTE_PEDIDO_ID" />
+            </Principal>
+            <Dependent Role="DETALLE_VENTA">
+              <PropertyRef Name="CLIENTE_PEDIDO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLE_VENTA_VENTA">
+          <End Role="VENTA" Type="Self.VENTA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA">
+              <PropertyRef Name="VENTA_ID" />
+            </Principal>
+            <Dependent Role="DETALLE_VENTA">
+              <PropertyRef Name="VENTA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_USUARIO_TIPO">
+          <End Role="USUARIO_TIPO_USUARIO" Type="Self.USUARIO_TIPO_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO_TIPO_USUARIO">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+              <PropertyRef Name="USUARIO_ID" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+              <PropertyRef Name="USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADOR_TIPO_USUARIO">
+          <End Role="USUARIO_TIPO_USUARIO" Type="Self.USUARIO_TIPO_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EMPLEADOR" Type="Self.EMPLEADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO_TIPO_USUARIO">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+              <PropertyRef Name="USUARIO_ID" />
+            </Principal>
+            <Dependent Role="EMPLEADOR">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+              <PropertyRef Name="USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_ESTADO_PEDIDO">
+          <End Role="ESTADO_PEDIDO" Type="Self.ESTADO_PEDIDO" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_PEDIDO">
+              <PropertyRef Name="ESTADO_ID" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="ESTADO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_FORMA_PAGO">
+          <End Role="FORMA_PAGO" Type="Self.FORMA_PAGO" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMA_PAGO">
+              <PropertyRef Name="FORMA_PAGO_ID" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="FORMA_PAGO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_PLATILLO_PEDIDO">
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="1" />
+          <End Role="PEDIDO_PLATILLO" Type="Self.PEDIDO_PLATILLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="PEDIDO_ID" />
+            </Principal>
+            <Dependent Role="PEDIDO_PLATILLO">
+              <PropertyRef Name="PEDIDO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_PLATILLO_PLATILLO">
+          <End Role="PLATILLO" Type="Self.PLATILLO" Multiplicity="1" />
+          <End Role="PEDIDO_PLATILLO" Type="Self.PEDIDO_PLATILLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLATILLO">
+              <PropertyRef Name="PLATILLO_ID" />
+            </Principal>
+            <Dependent Role="PEDIDO_PLATILLO">
+              <PropertyRef Name="PLATILLO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLANILLA_CONVENIO">
+          <End Role="CONVENIO_EMPRESA" Type="Self.CONVENIO_EMPRESA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PLANILLA_TRABAJADORES" Type="Self.PLANILLA_TRABAJADORES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONVENIO_EMPRESA">
+              <PropertyRef Name="CONVENIO_EMPRESA_ID" />
+            </Principal>
+            <Dependent Role="PLANILLA_TRABAJADORES">
+              <PropertyRef Name="CONVENIO_EMPRESA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_TIPO_TIPO">
+          <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="USUARIO_TIPO_USUARIO" Type="Self.USUARIO_TIPO_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_USUARIO">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+            </Principal>
+            <Dependent Role="USUARIO_TIPO_USUARIO">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_TIPO_USUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="USUARIO_TIPO_USUARIO" Type="Self.USUARIO_TIPO_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="USUARIO_ID" />
+            </Principal>
+            <Dependent Role="USUARIO_TIPO_USUARIO">
+              <PropertyRef Name="USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="FN_LOGIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="ASUBD" ReturnType="number">
+          <Parameter Name="PNOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="PCONTRASENA" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="FN_LOGIN_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="ASUBD" ReturnType="number">
+          <Parameter Name="PNOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="PCONTRASENA" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="PROCEDURE_ACTUALIZAR_EMPLEADO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ASUBD">
+          <Parameter Name="P_NOMBRE_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CONTRASENA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_TIPO_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_APPATERNO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_APMATERNO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_RUT" Type="number" Mode="In" />
+        </Function>
+        <Function Name="PROCEDURE_CREAR_CUENTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ASUBD">
+          <Parameter Name="P_NOMBRE_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CONTRASENA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_TIPO_USUARIO" Type="number" Mode="In" />
+          <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_APPATERNO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_APMATERNO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_RUT" Type="number" Mode="In" />
+          <Parameter Name="P_RETORNO" Type="number" Mode="Out" />
+        </Function>
+        <Function Name="PROCEDURE_CREAR_PLATILLO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ASUBD">
+          <Parameter Name="P_VALOR" Type="number" Mode="In" />
+          <Parameter Name="P_TIEMPO_PREPARACION" Type="number" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_SRC" Type="varchar2" Mode="In" />
+          <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
+          <Parameter Name="P_RETORNO" Type="number" Mode="Out" />
+        </Function>
+        <Function Name="PROCEDURE_DISPO_PLATILLOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ASUBD">
+          <Parameter Name="P_DIA" Type="number" Mode="In" />
+          <Parameter Name="P_PLATILLO_ID" Type="number" Mode="In" />
+          <Parameter Name="P_RETORNO" Type="number" Mode="Out" />
+        </Function>
+        <Function Name="PROCEDURE_ELIMINAR_DISPO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ASUBD">
+          <Parameter Name="P_DIA_ID" Type="number" Mode="In" />
+          <Parameter Name="P_PLATILLO_ID" Type="number" Mode="In" />
+          <Parameter Name="P_RETORNO" Type="number" Mode="Out" />
+        </Function>
+        <Function Name="PROCEDURE_INSERT_PLANILLA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ASUBD">
+          <Parameter Name="P_ID" Type="number" Mode="In" />
+          <Parameter Name="P_CONVENIO_ID" Type="number" Mode="In" />
+          <Parameter Name="P_RUTA" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="PROCEDURE_REALIZAR_PEDIDO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="ASUBD">
+          <Parameter Name="P_FORMA_PAGO" Type="number" Mode="In" />
+          <Parameter Name="P_CANTIDAD_PLATILLOS" Type="number" Mode="In" />
+          <Parameter Name="P_PEDIDO_DIRECCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_PLATILLO_ID" Type="number" Mode="In" />
+          <Parameter Name="P_CLIENTE_ID" Type="number" Mode="In" />
+          <Parameter Name="P_RETORNO" Type="number" Mode="Out" />
+        </Function>
+        <EntityContainer Name="ModeloAlimentosStoreContainer">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="CLIENTE_PEDIDO" EntityType="Self.CLIENTE_PEDIDO" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="CONVENIO_EMPRESA" EntityType="Self.CONVENIO_EMPRESA" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="DETALLE_VENTA" EntityType="Self.DETALLE_VENTA" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="DIA" EntityType="Self.DIA" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="DIA_PLATILLO" EntityType="Self.DIA_PLATILLO" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="EMPLEADOR" EntityType="Self.EMPLEADOR" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="ESTADO_PEDIDO" EntityType="Self.ESTADO_PEDIDO" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="FORMA_PAGO" EntityType="Self.FORMA_PAGO" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="PEDIDO_PLATILLO" EntityType="Self.PEDIDO_PLATILLO" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="PLANILLA_TRABAJADORES" EntityType="Self.PLANILLA_TRABAJADORES" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="PLATILLO" EntityType="Self.PLATILLO" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="USUARIO_TIPO_USUARIO" EntityType="Self.USUARIO_TIPO_USUARIO" Schema="ASUBD" store:Type="Tables" />
+          <EntitySet Name="VENTA" EntityType="Self.VENTA" Schema="ASUBD" store:Type="Tables" />
+          <AssociationSet Name="CLIENTE_USUARIO_TIPO_FK" Association="Self.CLIENTE_USUARIO_TIPO_FK">
+            <End Role="USUARIO_TIPO_USUARIO" EntitySet="USUARIO_TIPO_USUARIO" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="CONVENIO_EMPRESA_FK1" Association="Self.CONVENIO_EMPRESA_FK1">
+            <End Role="EMPLEADOR" EntitySet="EMPLEADOR" />
+            <End Role="CONVENIO_EMPRESA" EntitySet="CONVENIO_EMPRESA" />
+          </AssociationSet>
+          <AssociationSet Name="DIA_PLATILLO_FK1" Association="Self.DIA_PLATILLO_FK1">
+            <End Role="DIA" EntitySet="DIA" />
+            <End Role="DIA_PLATILLO" EntitySet="DIA_PLATILLO" />
+          </AssociationSet>
+          <AssociationSet Name="DIA_PLATILLO_FK2" Association="Self.DIA_PLATILLO_FK2">
+            <End Role="PLATILLO" EntitySet="PLATILLO" />
+            <End Role="DIA_PLATILLO" EntitySet="DIA_PLATILLO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_PEDIDO_CLIENTE" Association="Self.FK_CLIENTE_PEDIDO_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="CLIENTE_PEDIDO" EntitySet="CLIENTE_PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_PEDIDO_PLATILLO" Association="Self.FK_CLIENTE_PEDIDO_PLATILLO">
+            <End Role="PEDIDO_PLATILLO" EntitySet="PEDIDO_PLATILLO" />
+            <End Role="CLIENTE_PEDIDO" EntitySet="CLIENTE_PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_VENTA_CLIENTE" Association="Self.FK_DETALLE_VENTA_CLIENTE">
+            <End Role="CLIENTE_PEDIDO" EntitySet="CLIENTE_PEDIDO" />
+            <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_VENTA_VENTA" Association="Self.FK_DETALLE_VENTA_VENTA">
+            <End Role="VENTA" EntitySet="VENTA" />
+            <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_USUARIO_TIPO" Association="Self.FK_EMPLEADO_USUARIO_TIPO">
+            <End Role="USUARIO_TIPO_USUARIO" EntitySet="USUARIO_TIPO_USUARIO" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADOR_TIPO_USUARIO" Association="Self.FK_EMPLEADOR_TIPO_USUARIO">
+            <End Role="USUARIO_TIPO_USUARIO" EntitySet="USUARIO_TIPO_USUARIO" />
+            <End Role="EMPLEADOR" EntitySet="EMPLEADOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_ESTADO_PEDIDO" Association="Self.FK_PEDIDO_ESTADO_PEDIDO">
+            <End Role="ESTADO_PEDIDO" EntitySet="ESTADO_PEDIDO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_FORMA_PAGO" Association="Self.FK_PEDIDO_FORMA_PAGO">
+            <End Role="FORMA_PAGO" EntitySet="FORMA_PAGO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_PLATILLO_PEDIDO" Association="Self.FK_PEDIDO_PLATILLO_PEDIDO">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="PEDIDO_PLATILLO" EntitySet="PEDIDO_PLATILLO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_PLATILLO_PLATILLO" Association="Self.FK_PEDIDO_PLATILLO_PLATILLO">
+            <End Role="PLATILLO" EntitySet="PLATILLO" />
+            <End Role="PEDIDO_PLATILLO" EntitySet="PEDIDO_PLATILLO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLANILLA_CONVENIO" Association="Self.FK_PLANILLA_CONVENIO">
+            <End Role="CONVENIO_EMPRESA" EntitySet="CONVENIO_EMPRESA" />
+            <End Role="PLANILLA_TRABAJADORES" EntitySet="PLANILLA_TRABAJADORES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_TIPO_TIPO" Association="Self.FK_USUARIO_TIPO_TIPO">
+            <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+            <End Role="USUARIO_TIPO_USUARIO" EntitySet="USUARIO_TIPO_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_TIPO_USUARIO" Association="Self.FK_USUARIO_TIPO_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO_TIPO_USUARIO" EntitySet="USUARIO_TIPO_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModeloAlimentos" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="CLIENTE_ID" />
+          </Key>
+          <Property Name="CLIENTE_ID" Type="Byte" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APPATERNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APMATERNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUT" Type="Int32" Nullable="false" />
+          <Property Name="TIPO_USUARIO_ID" Type="Byte" Nullable="false" />
+          <Property Name="USUARIO_ID" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="USUARIO_TIPO_USUARIO" Relationship="Self.CLIENTE_USUARIO_TIPO_FK" FromRole="CLIENTE" ToRole="USUARIO_TIPO_USUARIO" />
+          <NavigationProperty Name="CLIENTE_PEDIDO" Relationship="Self.FK_CLIENTE_PEDIDO_CLIENTE" FromRole="CLIENTE" ToRole="CLIENTE_PEDIDO" />
+        </EntityType>
+        <EntityType Name="CLIENTE_PEDIDO">
+          <Key>
+            <PropertyRef Name="CLIENTE_PEDIDO_ID" />
+          </Key>
+          <Property Name="CLIENTE_PEDIDO_ID" Type="Byte" Nullable="false" />
+          <Property Name="CLIENTE_ID" Type="Byte" Nullable="false" />
+          <Property Name="PEDIDO_ID" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.FK_CLIENTE_PEDIDO_CLIENTE" FromRole="CLIENTE_PEDIDO" ToRole="CLIENTE" />
+          <NavigationProperty Name="PEDIDO_PLATILLO" Relationship="Self.FK_CLIENTE_PEDIDO_PLATILLO" FromRole="CLIENTE_PEDIDO" ToRole="PEDIDO_PLATILLO" />
+          <NavigationProperty Name="DETALLE_VENTA" Relationship="Self.FK_DETALLE_VENTA_CLIENTE" FromRole="CLIENTE_PEDIDO" ToRole="DETALLE_VENTA" />
+        </EntityType>
+        <EntityType Name="CONVENIO_EMPRESA">
+          <Key>
+            <PropertyRef Name="CONVENIO_EMPRESA_ID" />
+          </Key>
+          <Property Name="CONVENIO_EMPRESA_ID" Type="Byte" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUT" Type="Int32" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_INICIO" Type="DateTime" />
+          <Property Name="FECHA_TERMINO" Type="DateTime" />
+          <Property Name="EMPLEADOR" Type="Byte" />
+          <NavigationProperty Name="EMPLEADOR1" Relationship="Self.CONVENIO_EMPRESA_FK1" FromRole="CONVENIO_EMPRESA" ToRole="EMPLEADOR" />
+          <NavigationProperty Name="PLANILLA_TRABAJADORES" Relationship="Self.FK_PLANILLA_CONVENIO" FromRole="CONVENIO_EMPRESA" ToRole="PLANILLA_TRABAJADORES" />
+        </EntityType>
+        <EntityType Name="DETALLE_VENTA">
+          <Key>
+            <PropertyRef Name="VENTA_ID" />
+          </Key>
+          <Property Name="VENTA_ID" Type="Int32" Nullable="false" />
+          <Property Name="CLIENTE_PEDIDO_ID" Type="Byte" Nullable="false" />
+          <Property Name="TOTAL" Type="Int32" />
+          <NavigationProperty Name="CLIENTE_PEDIDO" Relationship="Self.FK_DETALLE_VENTA_CLIENTE" FromRole="DETALLE_VENTA" ToRole="CLIENTE_PEDIDO" />
+          <NavigationProperty Name="VENTA" Relationship="Self.FK_DETALLE_VENTA_VENTA" FromRole="DETALLE_VENTA" ToRole="VENTA" />
+        </EntityType>
+        <EntityType Name="DIA">
+          <Key>
+            <PropertyRef Name="DIA_ID" />
+          </Key>
+          <Property Name="DIA_ID" Type="Byte" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DIA_PLATILLO" Relationship="Self.DIA_PLATILLO_FK1" FromRole="DIA" ToRole="DIA_PLATILLO" />
+        </EntityType>
+        <EntityType Name="DIA_PLATILLO">
+          <Key>
+            <PropertyRef Name="DIA" />
+            <PropertyRef Name="PLATILLO" />
+          </Key>
+          <Property Name="DIA" Type="Byte" Nullable="false" />
+          <Property Name="PLATILLO" Type="Byte" Nullable="false" />
+          <Property Name="MODIFICACION" Type="DateTime" />
+          <NavigationProperty Name="DIA1" Relationship="Self.DIA_PLATILLO_FK1" FromRole="DIA_PLATILLO" ToRole="DIA" />
+          <NavigationProperty Name="PLATILLO1" Relationship="Self.DIA_PLATILLO_FK2" FromRole="DIA_PLATILLO" ToRole="PLATILLO" />
+        </EntityType>
+        <EntityType Name="EMPLEADO">
+          <Key>
+            <PropertyRef Name="EMPLEADO_ID" />
+          </Key>
+          <Property Name="EMPLEADO_ID" Type="Byte" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APPATERNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APMATERNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUT" Type="Int32" Nullable="false" />
+          <Property Name="TIPO_USUARIO_ID" Type="Byte" Nullable="false" />
+          <Property Name="USUARIO_ID" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="USUARIO_TIPO_USUARIO" Relationship="Self.FK_EMPLEADO_USUARIO_TIPO" FromRole="EMPLEADO" ToRole="USUARIO_TIPO_USUARIO" />
+        </EntityType>
+        <EntityType Name="EMPLEADOR">
+          <Key>
+            <PropertyRef Name="EMPLEADOR_ID" />
+          </Key>
+          <Property Name="EMPLEADOR_ID" Type="Byte" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APPATERNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APMATERNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RUT" Type="Int32" Nullable="false" />
+          <Property Name="TIPO_USUARIO_ID" Type="Byte" Nullable="false" />
+          <Property Name="USUARIO_ID" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="CONVENIO_EMPRESA" Relationship="Self.CONVENIO_EMPRESA_FK1" FromRole="EMPLEADOR" ToRole="CONVENIO_EMPRESA" />
+          <NavigationProperty Name="USUARIO_TIPO_USUARIO" Relationship="Self.FK_EMPLEADOR_TIPO_USUARIO" FromRole="EMPLEADOR" ToRole="USUARIO_TIPO_USUARIO" />
+        </EntityType>
+        <EntityType Name="ESTADO_PEDIDO">
+          <Key>
+            <PropertyRef Name="ESTADO_ID" />
+          </Key>
+          <Property Name="ESTADO_ID" Type="Byte" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PEDIDO" Relationship="Self.FK_PEDIDO_ESTADO_PEDIDO" FromRole="ESTADO_PEDIDO" ToRole="PEDIDO" />
+        </EntityType>
+        <EntityType Name="FORMA_PAGO">
+          <Key>
+            <PropertyRef Name="FORMA_PAGO_ID" />
+          </Key>
+          <Property Name="FORMA_PAGO_ID" Type="Byte" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PEDIDO" Relationship="Self.FK_PEDIDO_FORMA_PAGO" FromRole="FORMA_PAGO" ToRole="PEDIDO" />
+        </EntityType>
+        <EntityType Name="PEDIDO">
+          <Key>
+            <PropertyRef Name="PEDIDO_ID" />
+          </Key>
+          <Property Name="PEDIDO_ID" Type="Byte" Nullable="false" />
+          <Property Name="FORMA_PAGO_ID" Type="Byte" Nullable="false" />
+          <Property Name="ESTADO_ID" Type="Byte" Nullable="false" />
+          <Property Name="DIRECCION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HORA_PEDIDO" Type="DateTime" Precision="6" Nullable="false" />
+          <Property Name="HORA_ENTREGA" Type="DateTime" Precision="6" Nullable="false" />
+          <NavigationProperty Name="ESTADO_PEDIDO" Relationship="Self.FK_PEDIDO_ESTADO_PEDIDO" FromRole="PEDIDO" ToRole="ESTADO_PEDIDO" />
+          <NavigationProperty Name="FORMA_PAGO" Relationship="Self.FK_PEDIDO_FORMA_PAGO" FromRole="PEDIDO" ToRole="FORMA_PAGO" />
+          <NavigationProperty Name="PEDIDO_PLATILLO" Relationship="Self.FK_PEDIDO_PLATILLO_PEDIDO" FromRole="PEDIDO" ToRole="PEDIDO_PLATILLO" />
+        </EntityType>
+        <EntityType Name="PEDIDO_PLATILLO">
+          <Key>
+            <PropertyRef Name="PEDIDO_PLATILLO_ID" />
+          </Key>
+          <Property Name="PEDIDO_PLATILLO_ID" Type="Byte" Nullable="false" />
+          <Property Name="PEDIDO_ID" Type="Byte" Nullable="false" />
+          <Property Name="PLATILLO_ID" Type="Byte" Nullable="false" />
+          <Property Name="CANTIDAD" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="CLIENTE_PEDIDO" Relationship="Self.FK_CLIENTE_PEDIDO_PLATILLO" FromRole="PEDIDO_PLATILLO" ToRole="CLIENTE_PEDIDO" />
+          <NavigationProperty Name="PEDIDO" Relationship="Self.FK_PEDIDO_PLATILLO_PEDIDO" FromRole="PEDIDO_PLATILLO" ToRole="PEDIDO" />
+          <NavigationProperty Name="PLATILLO" Relationship="Self.FK_PEDIDO_PLATILLO_PLATILLO" FromRole="PEDIDO_PLATILLO" ToRole="PLATILLO" />
+        </EntityType>
+        <EntityType Name="PLANILLA_TRABAJADORES">
+          <Key>
+            <PropertyRef Name="PLANILLA_ID" />
+          </Key>
+          <Property Name="PLANILLA_ID" Type="Byte" Nullable="false" />
+          <Property Name="FECHA_SUBIDA" Type="DateTime" Nullable="false" />
+          <Property Name="CONVENIO_EMPRESA_ID" Type="Byte" Nullable="false" />
+          <Property Name="NOMBRE_ARCHIVO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CONVENIO_EMPRESA" Relationship="Self.FK_PLANILLA_CONVENIO" FromRole="PLANILLA_TRABAJADORES" ToRole="CONVENIO_EMPRESA" />
+        </EntityType>
+        <EntityType Name="PLATILLO">
+          <Key>
+            <PropertyRef Name="PLATILLO_ID" />
+          </Key>
+          <Property Name="PLATILLO_ID" Type="Byte" Nullable="false" />
+          <Property Name="VALOR" Type="Int16" Nullable="false" />
+          <Property Name="PROMEDIO_PREPARACION" Type="Byte" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SRC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DIA_PLATILLO" Relationship="Self.DIA_PLATILLO_FK2" FromRole="PLATILLO" ToRole="DIA_PLATILLO" />
+          <NavigationProperty Name="PEDIDO_PLATILLO" Relationship="Self.FK_PEDIDO_PLATILLO_PLATILLO" FromRole="PLATILLO" ToRole="PEDIDO_PLATILLO" />
+        </EntityType>
+        <EntityType Name="TIPO_USUARIO">
+          <Key>
+            <PropertyRef Name="TIPO_USUARIO_ID" />
+          </Key>
+          <Property Name="TIPO_USUARIO_ID" Type="Byte" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIO_TIPO_USUARIO" Relationship="Self.FK_USUARIO_TIPO_TIPO" FromRole="TIPO_USUARIO" ToRole="USUARIO_TIPO_USUARIO" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="USUARIO_ID" />
+          </Key>
+          <Property Name="USUARIO_ID" Type="Byte" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTRASENA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIPO_USUARIO" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="USUARIO_TIPO_USUARIO" Relationship="Self.FK_USUARIO_TIPO_USUARIO" FromRole="USUARIO" ToRole="USUARIO_TIPO_USUARIO" />
+        </EntityType>
+        <EntityType Name="USUARIO_TIPO_USUARIO">
+          <Key>
+            <PropertyRef Name="TIPO_USUARIO_ID" />
+            <PropertyRef Name="USUARIO_ID" />
+          </Key>
+          <Property Name="TIPO_USUARIO_ID" Type="Byte" Nullable="false" />
+          <Property Name="USUARIO_ID" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="CLIENTE" Relationship="Self.CLIENTE_USUARIO_TIPO_FK" FromRole="USUARIO_TIPO_USUARIO" ToRole="CLIENTE" />
+          <NavigationProperty Name="EMPLEADO" Relationship="Self.FK_EMPLEADO_USUARIO_TIPO" FromRole="USUARIO_TIPO_USUARIO" ToRole="EMPLEADO" />
+          <NavigationProperty Name="EMPLEADOR" Relationship="Self.FK_EMPLEADOR_TIPO_USUARIO" FromRole="USUARIO_TIPO_USUARIO" ToRole="EMPLEADOR" />
+          <NavigationProperty Name="TIPO_USUARIO" Relationship="Self.FK_USUARIO_TIPO_TIPO" FromRole="USUARIO_TIPO_USUARIO" ToRole="TIPO_USUARIO" />
+          <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_TIPO_USUARIO" FromRole="USUARIO_TIPO_USUARIO" ToRole="USUARIO" />
+        </EntityType>
+        <EntityType Name="VENTA">
+          <Key>
+            <PropertyRef Name="VENTA_ID" />
+          </Key>
+          <Property Name="VENTA_ID" Type="Int32" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Precision="6" />
+          <Property Name="NUMERO_DOCUMENTO" Type="Int32" />
+          <NavigationProperty Name="DETALLE_VENTA" Relationship="Self.FK_DETALLE_VENTA_VENTA" FromRole="VENTA" ToRole="DETALLE_VENTA" />
+        </EntityType>
+        <Association Name="CLIENTE_USUARIO_TIPO_FK">
+          <End Role="USUARIO_TIPO_USUARIO" Type="Self.USUARIO_TIPO_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO_TIPO_USUARIO">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+              <PropertyRef Name="USUARIO_ID" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+              <PropertyRef Name="USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_PEDIDO_CLIENTE">
+          <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+          <End Role="CLIENTE_PEDIDO" Type="Self.CLIENTE_PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE">
+              <PropertyRef Name="CLIENTE_ID" />
+            </Principal>
+            <Dependent Role="CLIENTE_PEDIDO">
+              <PropertyRef Name="CLIENTE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_PEDIDO_PLATILLO">
+          <End Role="PEDIDO_PLATILLO" Type="Self.PEDIDO_PLATILLO" Multiplicity="1" />
+          <End Role="CLIENTE_PEDIDO" Type="Self.CLIENTE_PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO_PLATILLO">
+              <PropertyRef Name="PEDIDO_PLATILLO_ID" />
+            </Principal>
+            <Dependent Role="CLIENTE_PEDIDO">
+              <PropertyRef Name="PEDIDO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLE_VENTA_CLIENTE">
+          <End Role="CLIENTE_PEDIDO" Type="Self.CLIENTE_PEDIDO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CLIENTE_PEDIDO">
+              <PropertyRef Name="CLIENTE_PEDIDO_ID" />
+            </Principal>
+            <Dependent Role="DETALLE_VENTA">
+              <PropertyRef Name="CLIENTE_PEDIDO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CONVENIO_EMPRESA_FK1">
+          <End Role="EMPLEADOR" Type="Self.EMPLEADOR" Multiplicity="0..1" />
+          <End Role="CONVENIO_EMPRESA" Type="Self.CONVENIO_EMPRESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPLEADOR">
+              <PropertyRef Name="EMPLEADOR_ID" />
+            </Principal>
+            <Dependent Role="CONVENIO_EMPRESA">
+              <PropertyRef Name="EMPLEADOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLANILLA_CONVENIO">
+          <End Role="CONVENIO_EMPRESA" Type="Self.CONVENIO_EMPRESA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PLANILLA_TRABAJADORES" Type="Self.PLANILLA_TRABAJADORES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CONVENIO_EMPRESA">
+              <PropertyRef Name="CONVENIO_EMPRESA_ID" />
+            </Principal>
+            <Dependent Role="PLANILLA_TRABAJADORES">
+              <PropertyRef Name="CONVENIO_EMPRESA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLE_VENTA_VENTA">
+          <End Role="VENTA" Type="Self.VENTA" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DETALLE_VENTA" Type="Self.DETALLE_VENTA" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA">
+              <PropertyRef Name="VENTA_ID" />
+            </Principal>
+            <Dependent Role="DETALLE_VENTA">
+              <PropertyRef Name="VENTA_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DIA_PLATILLO_FK1">
+          <End Role="DIA" Type="Self.DIA" Multiplicity="1" />
+          <End Role="DIA_PLATILLO" Type="Self.DIA_PLATILLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIA">
+              <PropertyRef Name="DIA_ID" />
+            </Principal>
+            <Dependent Role="DIA_PLATILLO">
+              <PropertyRef Name="DIA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DIA_PLATILLO_FK2">
+          <End Role="PLATILLO" Type="Self.PLATILLO" Multiplicity="1" />
+          <End Role="DIA_PLATILLO" Type="Self.DIA_PLATILLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLATILLO">
+              <PropertyRef Name="PLATILLO_ID" />
+            </Principal>
+            <Dependent Role="DIA_PLATILLO">
+              <PropertyRef Name="PLATILLO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADO_USUARIO_TIPO">
+          <End Role="USUARIO_TIPO_USUARIO" Type="Self.USUARIO_TIPO_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO_TIPO_USUARIO">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+              <PropertyRef Name="USUARIO_ID" />
+            </Principal>
+            <Dependent Role="EMPLEADO">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+              <PropertyRef Name="USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMPLEADOR_TIPO_USUARIO">
+          <End Role="USUARIO_TIPO_USUARIO" Type="Self.USUARIO_TIPO_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EMPLEADOR" Type="Self.EMPLEADOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO_TIPO_USUARIO">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+              <PropertyRef Name="USUARIO_ID" />
+            </Principal>
+            <Dependent Role="EMPLEADOR">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+              <PropertyRef Name="USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_ESTADO_PEDIDO">
+          <End Role="ESTADO_PEDIDO" Type="Self.ESTADO_PEDIDO" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADO_PEDIDO">
+              <PropertyRef Name="ESTADO_ID" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="ESTADO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_FORMA_PAGO">
+          <End Role="FORMA_PAGO" Type="Self.FORMA_PAGO" Multiplicity="1" />
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FORMA_PAGO">
+              <PropertyRef Name="FORMA_PAGO_ID" />
+            </Principal>
+            <Dependent Role="PEDIDO">
+              <PropertyRef Name="FORMA_PAGO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_PLATILLO_PEDIDO">
+          <End Role="PEDIDO" Type="Self.PEDIDO" Multiplicity="1" />
+          <End Role="PEDIDO_PLATILLO" Type="Self.PEDIDO_PLATILLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PEDIDO">
+              <PropertyRef Name="PEDIDO_ID" />
+            </Principal>
+            <Dependent Role="PEDIDO_PLATILLO">
+              <PropertyRef Name="PEDIDO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PEDIDO_PLATILLO_PLATILLO">
+          <End Role="PLATILLO" Type="Self.PLATILLO" Multiplicity="1" />
+          <End Role="PEDIDO_PLATILLO" Type="Self.PEDIDO_PLATILLO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLATILLO">
+              <PropertyRef Name="PLATILLO_ID" />
+            </Principal>
+            <Dependent Role="PEDIDO_PLATILLO">
+              <PropertyRef Name="PLATILLO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_TIPO_TIPO">
+          <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="USUARIO_TIPO_USUARIO" Type="Self.USUARIO_TIPO_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_USUARIO">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+            </Principal>
+            <Dependent Role="USUARIO_TIPO_USUARIO">
+              <PropertyRef Name="TIPO_USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIO_TIPO_USUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="USUARIO_TIPO_USUARIO" Type="Self.USUARIO_TIPO_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="USUARIO_ID" />
+            </Principal>
+            <Dependent Role="USUARIO_TIPO_USUARIO">
+              <PropertyRef Name="USUARIO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EntidadesAlimentos" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="CLIENTE_PEDIDO" EntityType="Self.CLIENTE_PEDIDO" />
+          <EntitySet Name="CONVENIO_EMPRESA" EntityType="Self.CONVENIO_EMPRESA" />
+          <EntitySet Name="DETALLE_VENTA" EntityType="Self.DETALLE_VENTA" />
+          <EntitySet Name="DIA" EntityType="Self.DIA" />
+          <EntitySet Name="DIA_PLATILLO" EntityType="Self.DIA_PLATILLO" />
+          <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" />
+          <EntitySet Name="EMPLEADOR" EntityType="Self.EMPLEADOR" />
+          <EntitySet Name="ESTADO_PEDIDO" EntityType="Self.ESTADO_PEDIDO" />
+          <EntitySet Name="FORMA_PAGO" EntityType="Self.FORMA_PAGO" />
+          <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" />
+          <EntitySet Name="PEDIDO_PLATILLO" EntityType="Self.PEDIDO_PLATILLO" />
+          <EntitySet Name="PLANILLA_TRABAJADORES" EntityType="Self.PLANILLA_TRABAJADORES" />
+          <EntitySet Name="PLATILLO" EntityType="Self.PLATILLO" />
+          <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <EntitySet Name="USUARIO_TIPO_USUARIO" EntityType="Self.USUARIO_TIPO_USUARIO" />
+          <EntitySet Name="VENTA" EntityType="Self.VENTA" />
+          <AssociationSet Name="CLIENTE_USUARIO_TIPO_FK" Association="Self.CLIENTE_USUARIO_TIPO_FK">
+            <End Role="USUARIO_TIPO_USUARIO" EntitySet="USUARIO_TIPO_USUARIO" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_PEDIDO_CLIENTE" Association="Self.FK_CLIENTE_PEDIDO_CLIENTE">
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+            <End Role="CLIENTE_PEDIDO" EntitySet="CLIENTE_PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_PEDIDO_PLATILLO" Association="Self.FK_CLIENTE_PEDIDO_PLATILLO">
+            <End Role="PEDIDO_PLATILLO" EntitySet="PEDIDO_PLATILLO" />
+            <End Role="CLIENTE_PEDIDO" EntitySet="CLIENTE_PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_VENTA_CLIENTE" Association="Self.FK_DETALLE_VENTA_CLIENTE">
+            <End Role="CLIENTE_PEDIDO" EntitySet="CLIENTE_PEDIDO" />
+            <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="CONVENIO_EMPRESA_FK1" Association="Self.CONVENIO_EMPRESA_FK1">
+            <End Role="EMPLEADOR" EntitySet="EMPLEADOR" />
+            <End Role="CONVENIO_EMPRESA" EntitySet="CONVENIO_EMPRESA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLANILLA_CONVENIO" Association="Self.FK_PLANILLA_CONVENIO">
+            <End Role="CONVENIO_EMPRESA" EntitySet="CONVENIO_EMPRESA" />
+            <End Role="PLANILLA_TRABAJADORES" EntitySet="PLANILLA_TRABAJADORES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLE_VENTA_VENTA" Association="Self.FK_DETALLE_VENTA_VENTA">
+            <End Role="VENTA" EntitySet="VENTA" />
+            <End Role="DETALLE_VENTA" EntitySet="DETALLE_VENTA" />
+          </AssociationSet>
+          <AssociationSet Name="DIA_PLATILLO_FK1" Association="Self.DIA_PLATILLO_FK1">
+            <End Role="DIA" EntitySet="DIA" />
+            <End Role="DIA_PLATILLO" EntitySet="DIA_PLATILLO" />
+          </AssociationSet>
+          <AssociationSet Name="DIA_PLATILLO_FK2" Association="Self.DIA_PLATILLO_FK2">
+            <End Role="PLATILLO" EntitySet="PLATILLO" />
+            <End Role="DIA_PLATILLO" EntitySet="DIA_PLATILLO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADO_USUARIO_TIPO" Association="Self.FK_EMPLEADO_USUARIO_TIPO">
+            <End Role="USUARIO_TIPO_USUARIO" EntitySet="USUARIO_TIPO_USUARIO" />
+            <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMPLEADOR_TIPO_USUARIO" Association="Self.FK_EMPLEADOR_TIPO_USUARIO">
+            <End Role="USUARIO_TIPO_USUARIO" EntitySet="USUARIO_TIPO_USUARIO" />
+            <End Role="EMPLEADOR" EntitySet="EMPLEADOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_ESTADO_PEDIDO" Association="Self.FK_PEDIDO_ESTADO_PEDIDO">
+            <End Role="ESTADO_PEDIDO" EntitySet="ESTADO_PEDIDO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_FORMA_PAGO" Association="Self.FK_PEDIDO_FORMA_PAGO">
+            <End Role="FORMA_PAGO" EntitySet="FORMA_PAGO" />
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_PLATILLO_PEDIDO" Association="Self.FK_PEDIDO_PLATILLO_PEDIDO">
+            <End Role="PEDIDO" EntitySet="PEDIDO" />
+            <End Role="PEDIDO_PLATILLO" EntitySet="PEDIDO_PLATILLO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PEDIDO_PLATILLO_PLATILLO" Association="Self.FK_PEDIDO_PLATILLO_PLATILLO">
+            <End Role="PLATILLO" EntitySet="PLATILLO" />
+            <End Role="PEDIDO_PLATILLO" EntitySet="PEDIDO_PLATILLO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_TIPO_TIPO" Association="Self.FK_USUARIO_TIPO_TIPO">
+            <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+            <End Role="USUARIO_TIPO_USUARIO" EntitySet="USUARIO_TIPO_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIO_TIPO_USUARIO" Association="Self.FK_USUARIO_TIPO_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIO_TIPO_USUARIO" EntitySet="USUARIO_TIPO_USUARIO" />
+          </AssociationSet>
+          <FunctionImport Name="PROCEDURE_ACTUALIZAR_EMPLEADO">
+            <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_CONTRASENA" Mode="In" Type="String" />
+            <Parameter Name="P_TIPO_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_APPATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APMATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_RUT" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PROCEDURE_CREAR_CUENTA">
+            <Parameter Name="P_NOMBRE_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_CONTRASENA" Mode="In" Type="String" />
+            <Parameter Name="P_TIPO_USUARIO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_APPATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_APMATERNO" Mode="In" Type="String" />
+            <Parameter Name="P_RUT" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RETORNO" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PROCEDURE_DISPO_PLATILLOS">
+            <Parameter Name="P_DIA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PLATILLO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RETORNO" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PROCEDURE_INSERT_PLANILLA">
+            <Parameter Name="P_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CONVENIO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RUTA" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PROCEDURE_REALIZAR_PEDIDO">
+            <Parameter Name="P_FORMA_PAGO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CANTIDAD_PLATILLOS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PEDIDO_DIRECCION" Mode="In" Type="String" />
+            <Parameter Name="P_PLATILLO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CLIENTE_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RETORNO" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PROCEDURE_ELIMINAR_DISPO">
+            <Parameter Name="P_DIA_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_PLATILLO_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RETORNO" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PROCEDURE_CREAR_PLATILLO">
+            <Parameter Name="P_VALOR" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TIEMPO_PREPARACION" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_SRC" Mode="In" Type="String" />
+            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
+            <Parameter Name="P_RETORNO" Mode="Out" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModeloAlimentosStoreContainer" CdmEntityContainer="EntidadesAlimentos">
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="ModeloAlimentos.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APPATERNO" ColumnName="APPATERNO" />
+                <ScalarProperty Name="APMATERNO" ColumnName="APMATERNO" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="TIPO_USUARIO_ID" ColumnName="TIPO_USUARIO_ID" />
+                <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTE_PEDIDO">
+            <EntityTypeMapping TypeName="ModeloAlimentos.CLIENTE_PEDIDO">
+              <MappingFragment StoreEntitySet="CLIENTE_PEDIDO">
+                <ScalarProperty Name="CLIENTE_PEDIDO_ID" ColumnName="CLIENTE_PEDIDO_ID" />
+                <ScalarProperty Name="CLIENTE_ID" ColumnName="CLIENTE_ID" />
+                <ScalarProperty Name="PEDIDO_ID" ColumnName="PEDIDO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONVENIO_EMPRESA">
+            <EntityTypeMapping TypeName="ModeloAlimentos.CONVENIO_EMPRESA">
+              <MappingFragment StoreEntitySet="CONVENIO_EMPRESA">
+                <ScalarProperty Name="CONVENIO_EMPRESA_ID" ColumnName="CONVENIO_EMPRESA_ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="FECHA_TERMINO" ColumnName="FECHA_TERMINO" />
+                <ScalarProperty Name="EMPLEADOR" ColumnName="EMPLEADOR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_VENTA">
+            <EntityTypeMapping TypeName="ModeloAlimentos.DETALLE_VENTA">
+              <MappingFragment StoreEntitySet="DETALLE_VENTA">
+                <ScalarProperty Name="VENTA_ID" ColumnName="VENTA_ID" />
+                <ScalarProperty Name="CLIENTE_PEDIDO_ID" ColumnName="CLIENTE_PEDIDO_ID" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIA">
+            <EntityTypeMapping TypeName="ModeloAlimentos.DIA">
+              <MappingFragment StoreEntitySet="DIA">
+                <ScalarProperty Name="DIA_ID" ColumnName="DIA_ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIA_PLATILLO">
+            <EntityTypeMapping TypeName="ModeloAlimentos.DIA_PLATILLO">
+              <MappingFragment StoreEntitySet="DIA_PLATILLO">
+                <ScalarProperty Name="DIA" ColumnName="DIA" />
+                <ScalarProperty Name="PLATILLO" ColumnName="PLATILLO" />
+                <ScalarProperty Name="MODIFICACION" ColumnName="MODIFICACION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLEADO">
+            <EntityTypeMapping TypeName="ModeloAlimentos.EMPLEADO">
+              <MappingFragment StoreEntitySet="EMPLEADO">
+                <ScalarProperty Name="EMPLEADO_ID" ColumnName="EMPLEADO_ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APPATERNO" ColumnName="APPATERNO" />
+                <ScalarProperty Name="APMATERNO" ColumnName="APMATERNO" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="TIPO_USUARIO_ID" ColumnName="TIPO_USUARIO_ID" />
+                <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMPLEADOR">
+            <EntityTypeMapping TypeName="ModeloAlimentos.EMPLEADOR">
+              <MappingFragment StoreEntitySet="EMPLEADOR">
+                <ScalarProperty Name="EMPLEADOR_ID" ColumnName="EMPLEADOR_ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APPATERNO" ColumnName="APPATERNO" />
+                <ScalarProperty Name="APMATERNO" ColumnName="APMATERNO" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="TIPO_USUARIO_ID" ColumnName="TIPO_USUARIO_ID" />
+                <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADO_PEDIDO">
+            <EntityTypeMapping TypeName="ModeloAlimentos.ESTADO_PEDIDO">
+              <MappingFragment StoreEntitySet="ESTADO_PEDIDO">
+                <ScalarProperty Name="ESTADO_ID" ColumnName="ESTADO_ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FORMA_PAGO">
+            <EntityTypeMapping TypeName="ModeloAlimentos.FORMA_PAGO">
+              <MappingFragment StoreEntitySet="FORMA_PAGO">
+                <ScalarProperty Name="FORMA_PAGO_ID" ColumnName="FORMA_PAGO_ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEDIDO">
+            <EntityTypeMapping TypeName="ModeloAlimentos.PEDIDO">
+              <MappingFragment StoreEntitySet="PEDIDO">
+                <ScalarProperty Name="PEDIDO_ID" ColumnName="PEDIDO_ID" />
+                <ScalarProperty Name="FORMA_PAGO_ID" ColumnName="FORMA_PAGO_ID" />
+                <ScalarProperty Name="ESTADO_ID" ColumnName="ESTADO_ID" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="HORA_PEDIDO" ColumnName="HORA_PEDIDO" />
+                <ScalarProperty Name="HORA_ENTREGA" ColumnName="HORA_ENTREGA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PEDIDO_PLATILLO">
+            <EntityTypeMapping TypeName="ModeloAlimentos.PEDIDO_PLATILLO">
+              <MappingFragment StoreEntitySet="PEDIDO_PLATILLO">
+                <ScalarProperty Name="PEDIDO_PLATILLO_ID" ColumnName="PEDIDO_PLATILLO_ID" />
+                <ScalarProperty Name="PEDIDO_ID" ColumnName="PEDIDO_ID" />
+                <ScalarProperty Name="PLATILLO_ID" ColumnName="PLATILLO_ID" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLANILLA_TRABAJADORES">
+            <EntityTypeMapping TypeName="ModeloAlimentos.PLANILLA_TRABAJADORES">
+              <MappingFragment StoreEntitySet="PLANILLA_TRABAJADORES">
+                <ScalarProperty Name="PLANILLA_ID" ColumnName="PLANILLA_ID" />
+                <ScalarProperty Name="FECHA_SUBIDA" ColumnName="FECHA_SUBIDA" />
+                <ScalarProperty Name="CONVENIO_EMPRESA_ID" ColumnName="CONVENIO_EMPRESA_ID" />
+                <ScalarProperty Name="NOMBRE_ARCHIVO" ColumnName="NOMBRE_ARCHIVO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLATILLO">
+            <EntityTypeMapping TypeName="ModeloAlimentos.PLATILLO">
+              <MappingFragment StoreEntitySet="PLATILLO">
+                <ScalarProperty Name="PLATILLO_ID" ColumnName="PLATILLO_ID" />
+                <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+                <ScalarProperty Name="PROMEDIO_PREPARACION" ColumnName="PROMEDIO_PREPARACION" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="SRC" ColumnName="SRC" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_USUARIO">
+            <EntityTypeMapping TypeName="ModeloAlimentos.TIPO_USUARIO">
+              <MappingFragment StoreEntitySet="TIPO_USUARIO">
+                <ScalarProperty Name="TIPO_USUARIO_ID" ColumnName="TIPO_USUARIO_ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="ModeloAlimentos.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CONTRASENA" ColumnName="CONTRASENA" />
+                <ScalarProperty Name="TIPO_USUARIO" ColumnName="TIPO_USUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO_TIPO_USUARIO">
+            <EntityTypeMapping TypeName="ModeloAlimentos.USUARIO_TIPO_USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO_TIPO_USUARIO">
+                <ScalarProperty Name="TIPO_USUARIO_ID" ColumnName="TIPO_USUARIO_ID" />
+                <ScalarProperty Name="USUARIO_ID" ColumnName="USUARIO_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENTA">
+            <EntityTypeMapping TypeName="ModeloAlimentos.VENTA">
+              <MappingFragment StoreEntitySet="VENTA">
+                <ScalarProperty Name="VENTA_ID" ColumnName="VENTA_ID" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="NUMERO_DOCUMENTO" ColumnName="NUMERO_DOCUMENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PROCEDURE_ACTUALIZAR_EMPLEADO" FunctionName="ModeloAlimentos.Store.PROCEDURE_ACTUALIZAR_EMPLEADO" />
+          <FunctionImportMapping FunctionImportName="PROCEDURE_CREAR_CUENTA" FunctionName="ModeloAlimentos.Store.PROCEDURE_CREAR_CUENTA" />
+          <FunctionImportMapping FunctionImportName="PROCEDURE_DISPO_PLATILLOS" FunctionName="ModeloAlimentos.Store.PROCEDURE_DISPO_PLATILLOS" />
+          <FunctionImportMapping FunctionImportName="PROCEDURE_INSERT_PLANILLA" FunctionName="ModeloAlimentos.Store.PROCEDURE_INSERT_PLANILLA" />
+          <FunctionImportMapping FunctionImportName="PROCEDURE_REALIZAR_PEDIDO" FunctionName="ModeloAlimentos.Store.PROCEDURE_REALIZAR_PEDIDO" />
+          <FunctionImportMapping FunctionImportName="PROCEDURE_ELIMINAR_DISPO" FunctionName="ModeloAlimentos.Store.PROCEDURE_ELIMINAR_DISPO" />
+          <FunctionImportMapping FunctionImportName="PROCEDURE_CREAR_PLATILLO" FunctionName="ModeloAlimentos.Store.PROCEDURE_CREAR_PLATILLO" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

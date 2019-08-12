@@ -1,0 +1,57 @@
+﻿<Controls:MetroWindow x:Class="Vista.AdministrarPlatillos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vista"
+        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behaviours="clr-namespace:MahApps.Metro.Behaviours;assembly=MahApps.Metro"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        ShowTitleBar="False"
+        Title="Administrar Platillos" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Controls:MetroWindow.Background>
+        <LinearGradientBrush EndPoint="0.0,5" StartPoint="1.0,5" Opacity="1">
+            <GradientStop Color="#659999" Offset="0"/>
+            <GradientStop Color="#f4791f" Offset="1"/>
+        </LinearGradientBrush>
+    </Controls:MetroWindow.Background>
+    <Grid Height="auto">
+        <StackPanel Orientation="Horizontal" Margin="25,25,522,166">
+            <DataGrid x:Name="dgListaPlatillos" Width="230" VerticalAlignment="Top"
+                      ItemsSource="{Binding ListaPlatillos}"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                <DataGridTextColumn Header="Platillo" Binding="{Binding Nombre}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Valor" Binding="{Binding  Valor}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Preparación" Binding="{Binding  TiempoPreparacion , StringFormat={}{0} Minutos}"></DataGridTextColumn>
+                </DataGrid.Columns>
+                </DataGrid>
+        </StackPanel>
+        <GroupBox x:Name="groupBox2" Header="Cuenta" HorizontalAlignment="Left" Margin="322,25,0,0" VerticalAlignment="Top" Height="230" Width="330">
+            <Border Background="White" Margin="0" CornerRadius="5" Height="200">
+                <Grid Margin="10,10,10,-5.2">
+                    <Label x:Name="lblDescripcion" Content="Descripción" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="108" Margin="0,45,0,0"/>
+                    <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="txtDescripcion" IsEnabled="True" HorizontalAlignment="Left" Margin="115,45,0,0" TextWrapping="Wrap" Width="170" Height="25" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <Label x:Name="lblNombre" Content="Nombre" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="84" Margin="0,10,0,0"/>
+                    <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="txtNombre" IsEnabled="True" HorizontalAlignment="Left" Margin="115,10,0,0" TextWrapping="Wrap" Width="170" Height="25" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <Label x:Name="lblTiempoPreparacion" Content="Tiempo Preparación" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="115" Margin="0,80,0,0"/>
+                    <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="txtTiempoPreparacion" IsEnabled="True" HorizontalAlignment="Left" Margin="115,80,0,0" TextWrapping="Wrap" Width="170" Height="25" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <Label x:Name="lblValor" Content="Valor" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="108" Margin="0,115,0,0"/>
+                    <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="txtValor" IsEnabled="True" HorizontalAlignment="Left" Margin="115,115,0,0" TextWrapping="Wrap" Width="170" Height="25" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <Label x:Name="lblSrc" Content="Imagen" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="108" Margin="0,151,0,0"/>
+                    <TextBox x:Name="txtSrc" IsEnabled="False" HorizontalAlignment="Left" Margin="115,151,0,0" TextWrapping="Wrap" Width="170" Height="25" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                </Grid>
+            </Border>
+        </GroupBox>
+        <StackPanel Margin="600 380 0 0">
+            <Button x:Name="btnMenuPrincipal" Content="Menú Principal" VerticalAlignment="Top" Width="118"
+                Controls:ButtonHelper.CornerRadius="3,3,3,3" FontSize="11" Click="VolverMenuPrincipal"/>
+        </StackPanel>
+        <Button x:Name="btnImagen" Content="Agregar Imagen" VerticalAlignment="Top" Width="118"
+                Controls:ButtonHelper.CornerRadius="3,3,3,3" FontSize="11" Click="AgregarImagen" Margin="520,260,156,0"/>
+        <Button x:Name="btnAgregarPlatillo" Content="Agregar Platillo" VerticalAlignment="Top" Width="118"
+                Controls:ButtonHelper.CornerRadius="3,3,3,3" FontSize="11" Click="AgregarPlatillo" Margin="337,260,339,0"/>
+    </Grid>
+</Controls:MetroWindow>
